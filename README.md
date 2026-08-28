@@ -51,7 +51,7 @@ yay -S python-pywal greenclip betterlockscreen picom-git
 ```bash
 # Install core packages from APT
 sudo apt update
-sudo apt install bspwm sxhkd polybar rofi dunst kitty feh imagemagick pamixer brightnessctl maim xclip xdotool jq libnotify-bin fonts-jetbrains-mono python3-pip picom fonts-font-awesome fonts-firacode
+sudo apt install bspwm sxhkd polybar rofi dunst kitty feh imagemagick pamixer brightnessctl maim xclip xdotool jq libnotify-bin fonts-jetbrains-mono python3-pip picom fonts-font-awesome fonts-firacode betterlocksscreen
 
 # Install Pywal via pip
 pip3 install --user pywal
