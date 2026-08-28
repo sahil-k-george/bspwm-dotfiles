@@ -36,7 +36,7 @@ super + Escape
 
 # launch help menu keybindings list:
 super + F1
-	~/.config/bspwm/scripts/help.sh &
+	"$HOME/.config/bspwm/scripts/help.sh" &
 
 #
 # bspwm hotkeys
