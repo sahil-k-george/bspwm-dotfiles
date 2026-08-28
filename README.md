@@ -51,7 +51,7 @@ yay -S python-pywal greenclip betterlockscreen picom-git
 ```bash
 # Install core packages from APT
 sudo apt update
-sudo apt install bspwm sxhkd polybar rofi dunst kitty feh imagemagick pamixer brightnessctl maim xclip xdotool jq libnotify-bin fonts-jetbrains-mono python3-pip picom
+sudo apt install bspwm sxhkd polybar rofi dunst kitty feh imagemagick pamixer brightnessctl maim xclip xdotool jq libnotify-bin fonts-jetbrains-mono python3-pip picom fonts-font-awesome fonts-firacode
 
 # Install Pywal via pip
 pip3 install --user pywal
@@ -176,7 +176,24 @@ systemctl --user enable --now greenclip.service
 ```
 
 ---
+## Before exiting the current WM
+> Don't forget to add the entry for bspwm, otherwise you won't be able to access it.
 
+```bash
+sudo nano /usr/share/xsessions/bspwm.desktop
+```
+In the opened file, add this
+```
+[Desktop Entry]
+Name=bspwm
+Comment=Binary space partitioning window manager
+Exec=bspwm
+Type=Application
+DesktopNames=bspwm
+```
+
+
+---
 ## ⌨️ My Main Keybindings
 
 Here are the main keyboard shortcuts I use (defined in my [`sxhkdrc`](sxhkd/sxhkdrc)):
