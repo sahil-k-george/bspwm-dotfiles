@@ -1,14 +1,20 @@
-# BSPWM Desktop Environment Dotfiles
+# My BSPWM Dotfiles
 
-Welcome! This repository contains a curated and customized set of configuration files (dotfiles) for setting up a modern, mouse-less, and visually rich tiling window manager environment using **BSPWM** (Binary Space Partitioning Window Manager) as the core.
+These are my personal configuration files (dotfiles) for my BSPWM setup. This is a clean, keyboard-driven tiling window environment styled dynamically (via Pywal) using BSPWM, Polybar, Dunst, Rofi, and Kitty.
 
-All configurations are located inside the `.config` directory, structured to be modular and easy to install.
+Everything is stored inside the `.config` folder to keep things easy to manage, back up, and copy to new installations.
+
+---
+## Screenshots
+> Will be uploaded soon . . .
+
 
 ---
 
-## 🛠️ Components & Config Directories
+## 🛠️ What configs are Included
 
-The repository tracks only the configurations necessary for the BSPWM window manager stack:
+Here's the breakdown of my config directories and what each does in my setup:
+
 
 | Component | Directory / File | Description |
 | :--- | :--- | :--- |
@@ -25,11 +31,11 @@ The repository tracks only the configurations necessary for the BSPWM window man
 
 ---
 
-## 📦 Required Dependencies
+## 📦 Dependencies I Use
 
-To run this desktop environment successfully, make sure to install the following packages for your specific Linux distribution:
+Here are all the packages I have installed on my system to run this environment:
 
-### 1. Installation Commands by Distribution
+### 1. Installing on Different Linux Distros
 
 #### **Arch Linux**
 Using `pacman` and `yay` (or your preferred AUR helper):
@@ -86,14 +92,14 @@ sudo mv greenclip /usr/local/bin/
 
 ---
 
-## 📥 Deployment Guide
+## 📥 How to Set It Up
 
-Follow these instructions to clone this repository and deploy it to your home directory:
+Here are the steps to clone my repository and load these configurations on your own system:
 
 ### Step 1: Clone the repository
 Clone the repository to a local directory:
 ```bash
-git clone <your-repo-url> ~/dotfiles
+git clone https://github.com/sahil-k-george/bspwm-dotfiles.git ~/dotfiles
 ```
 
 ### Step 2: Backup existing configurations (Safe Step)
@@ -165,9 +171,9 @@ systemctl --user enable --now greenclip.service
 
 ---
 
-## ⌨️ Common Keybindings
+## ⌨️ My Main Keybindings
 
-Here are some default keyboard shortcuts defined in [`sxhkdrc`](sxhkd/sxhkdrc):
+Here are the main keyboard shortcuts I use (defined in my [`sxhkdrc`](sxhkd/sxhkdrc)):
 
 * **`Super + T`**: Launch Terminal (`kitty`)
 * **`Super + E`**: Launch File Manager (`thunar`)
@@ -177,5 +183,11 @@ Here are some default keyboard shortcuts defined in [`sxhkdrc`](sxhkd/sxhkdrc):
 * **`Super + Delete`**: Open Power Menu (Lock, Logout, Reboot, Shutdown)
 * **`Super + Escape`**: Reload hotkeys configuration (`sxhkd`)
 * **`Super + Ctrl + R`**: Reload window manager (`bspwm`)
-* **`Super + Arrow Keys`**: Move floating windows
-* **`Super + Alt + H/J/K/L`**: Resize windows
+* **`Super + 0` through `Super + 9`**: Switches workspaces from 1 - 10 
+
+
+## Additional Informations
+1. You have to download and supply your own wallpapers as of now, once I upload my own wallpapers, instructions on where to download it from will be updated. 
+2. Change the wallpaper by changing the `bgpath="$HOME/Pictures/carrera.png"` in [bspwmrc](bspwm/bspwmrc) path to the path of your wallpaper. Accent colors and stuff are automatically updated (At least that how it works on my PC ` ¯\_(ツ)_/¯ `). 
+3. Some of the scripts and other polybar stuff were used from [this repository](https://github.com/shell-ninja/i3-dotfiles) (Huge thanks to @shell-ninja for hosting his dotfiles, his repo was used as an inspiration and guide for setting up polybar and other stuff), and I think some configs still use them (that's why an entire scripts sub-folder is in the bspwm folder), so, as of now, they are dependent on them. This will be changing once porting some functions from the said repository is done. 
+4. More details will be added here soon.
