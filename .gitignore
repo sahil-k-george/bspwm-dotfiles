@@ -10,7 +10,7 @@
 !/kitty/
 !/wal/
 !/systemd/
-
+!/screenshots/
 # White-list specific config files in the root directory
 !/greenclip.toml
 !/picom.conf.arch

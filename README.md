@@ -6,8 +6,15 @@ Everything is stored inside the `.config` folder to keep things easy to manage, 
 
 ---
 ## Screenshots
-> Will be uploaded soon . . .
 
+<p align="center">
+  <img src="screenshots/screenshot1.png" alt="Screenshot 1" width="48%" />
+  <img src="screenshots/screenshot2.png" alt="Screenshot 2" width="48%" />
+</p>
+<p align="center">
+  <img src="screenshots/screenshot3.png" alt="Screenshot 3" width="48%" />
+  <img src="screenshots/screenshot4.png" alt="Screenshot 4" width="48%" />
+</p>
 
 ---
 
