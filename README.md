@@ -153,7 +153,20 @@ cp ~/dotfiles/.config/picom.conf.arch ~/.config/picom.conf
 
 ---
 
-### Step 4: Configure and Enable Systemd Services
+### Step 4: Make Scripts Executable (CRITICAL)
+BSPWM needs the startup configurations and scripts to be executable. If they are not, you will get a black screen (and some systems like Kali Linux will show a small fallback warning window with just an `okay` button).
+
+Run these commands to make sure the permissions are set correctly:
+```bash
+chmod +x ~/.config/bspwm/bspwmrc
+chmod +x ~/.config/polybar/launch.sh
+chmod +x ~/.config/polybar/bspwm/launch.sh
+chmod +x ~/.config/bspwm/scripts/*.sh
+```
+
+---
+
+### Step 5: Configure and Enable Systemd Services
 
 The Haskell clipboard manager `greenclip` requires its daemon to be running. We configure it as a user systemd service:
 
