@@ -1,5 +1,18 @@
 #!/bin/bash
 
+# Check if YAD is installed
+if ! command -v yad &> /dev/null; then
+    if command -v notify-send &> /dev/null; then
+        notify-send "Dependency Missing" "Please install 'yad' to view the help menu:\nsudo apt install yad  (or pacman -S yad)"
+    fi
+    if command -v gxmessage &> /dev/null; then
+        gxmessage -title "Help Menu Error" "YAD is not installed. Please install it using:\nsudo apt install yad" &
+    elif command -v xmessage &> /dev/null; then
+        xmessage "YAD is not installed. Please install it using: sudo apt install yad" &
+    fi
+    exit 1
+fi
+
 # Detect X11 monitor resolution
 res=$(xrandr --current | grep '*' | uniq | awk '{print $1}')
 x_mon=$(echo "$res" | cut -d'x' -f1)
@@ -66,4 +79,3 @@ yad --width=$dynamic_width --height=$dynamic_height \
 "" "" "" \
 "Brightness Keys" "Adjust Screen Brightness" "(brightnessctl)" \
 "Audio Volume Keys" "Adjust System Volume" "(pamixer / alsa)"
-\
