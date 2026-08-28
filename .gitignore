@@ -1,0 +1,27 @@
+# Ignore everything in the root of .config by default
+/*
+
+# White-list required BSPWM desktop directories
+!/bspwm/
+!/sxhkd/
+!/polybar/
+!/rofi/
+!/dunst/
+!/kitty/
+!/wal/
+!/systemd/
+
+# White-list specific config files in the root directory
+!/greenclip.toml
+!/picom.conf.arch
+
+# White-list git/documentation files
+!/.gitignore
+!/README.md
+
+# Ignore specific local/temporary files inside the white-listed directories
+*~
+*.tmp
+.DS_Store
+*.bak
+*.save
