@@ -1,4 +1,12 @@
 #! /bin/sh
+
+# Auto-configure/scale displays before setting up monitors
+if command -v autorandr >/dev/null; then
+    autorandr --change --default default
+else
+    xrandr --auto
+fi
+
 pgrep -x picom >/dev/null || picom &
 pgrep -x sxhkd > /dev/null || sxhkd &
 

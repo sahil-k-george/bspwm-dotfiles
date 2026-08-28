@@ -41,7 +41,7 @@ Here are all the packages I have installed on my system to run this environment:
 Using `pacman` and `yay` (or your preferred AUR helper):
 ```bash
 # Install core packages from official repos
-sudo pacman -S bspwm sxhkd polybar rofi dunst kitty feh imagemagick pamixer brightnessctl maim xclip xdotool jq libnotify ttf-jetbrains-mono-nerd
+sudo pacman -S bspwm sxhkd polybar rofi dunst kitty feh imagemagick pamixer brightnessctl maim xclip xdotool jq libnotify ttf-jetbrains-mono-nerd yad autorandr xorg-xrandr
 
 # Install AUR packages (pywal, greenclip, betterlockscreen, picom with animations)
 yay -S python-pywal greenclip betterlockscreen picom-git
@@ -51,7 +51,7 @@ yay -S python-pywal greenclip betterlockscreen picom-git
 ```bash
 # Install core packages from APT
 sudo apt update
-sudo apt install bspwm sxhkd polybar rofi dunst kitty feh imagemagick pamixer brightnessctl maim xclip xdotool jq libnotify-bin fonts-jetbrains-mono python3-pip picom fonts-font-awesome fonts-firacode betterlocksscreen
+sudo apt install bspwm sxhkd polybar rofi dunst kitty feh imagemagick pamixer brightnessctl maim xclip xdotool jq libnotify-bin fonts-jetbrains-mono python3-pip picom fonts-font-awesome fonts-firacode betterlocksscreen yad autorandr x11-xserver-utils
 
 # Install Pywal via pip
 pip3 install --user pywal
@@ -65,7 +65,7 @@ sudo mv greenclip /usr/local/bin/
 #### **Fedora**
 ```bash
 # Install core packages from DNF
-sudo dnf install bspwm sxhkd polybar rofi dunst kitty feh ImageMagick pamixer brightnessctl maim xclip xdotool jq libnotify jetbrains-mono-fonts picom
+sudo dnf install bspwm sxhkd polybar rofi dunst kitty feh ImageMagick pamixer brightnessctl maim xclip xdotool jq libnotify jetbrains-mono-fonts picom yad autorandr xrandr
 
 # Install Pywal via pip
 pip install --user pywal
@@ -79,7 +79,7 @@ sudo mv greenclip /usr/local/bin/
 #### **OpenSUSE**
 ```bash
 # Install core packages from Zypper
-sudo zypper install bspwm sxhkd polybar rofi dunst kitty feh ImageMagick pamixer brightnessctl maim xclip xdotool jq libnotify-tools jetbrains-mono-fonts picom
+sudo zypper install bspwm sxhkd polybar rofi dunst kitty feh ImageMagick pamixer brightnessctl maim xclip xdotool jq libnotify-tools jetbrains-mono-fonts picom yad autorandr xrandr
 
 # Install Pywal via pip
 pip install --user pywal
