@@ -126,7 +126,6 @@ ln -sf ~/dotfiles/polybar ~/.config/polybar
 ln -sf ~/dotfiles/rofi ~/.config/rofi
 ln -sf ~/dotfiles/dunst ~/.config/dunst
 ln -sf ~/dotfiles/kitty ~/.config/kitty
-ln -sf ~/dotfiles/wal ~/.config/wal
 
 # Link individual configuration files
 ln -sf ~/dotfiles/greenclip.toml ~/.config/greenclip.toml
@@ -144,11 +143,18 @@ cp -r ~/dotfiles/polybar ~/.config/
 cp -r ~/dotfiles/rofi ~/.config/
 cp -r ~/dotfiles/dunst ~/.config/
 cp -r ~/dotfiles/kitty ~/.config/
-cp -r ~/dotfiles/wal ~/.config/
 
 # Copy individual files
 cp ~/dotfiles/greenclip.toml ~/.config/greenclip.toml
 cp ~/dotfiles/picom.conf.arch ~/.config/picom.conf
+
+mkdir ~/.config/wal
+mkdir ~/.config/wal/templates
+mkdir ~/.config/wal/colorschemes
+mkdir ~/.config/wal/colorschemes/dark
+mkdir ~/.config/wal/colorschemes/light
+
+
 ```
 
 ---

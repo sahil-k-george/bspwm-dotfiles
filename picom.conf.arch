@@ -16,14 +16,7 @@
 # squeeze-bottom: Similar to squeeze, but the animation starts from bottom-most y-position
 # zoom: Windows are either created or destroyed from/to their center (not the screen center)
 
-#################################
-
-#enable or disable animations
-animations = true;
-#change animation speed of windows in current tag e.g open window in current tag
-animation-stiffness-in-tag = 200;
-#change animation speed of windows when tag changes
-animation-stiffness-tag-change = 90.0;
+animations = false;
 
 animation-window-mass = 0.4;
 animation-dampening = 15;

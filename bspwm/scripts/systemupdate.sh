@@ -47,7 +47,7 @@ check_update() {
 }
 
 package_update() {
-    kitty --title update sh -c "${upd_script}"
+    env LIBGL_ALWAYS_SOFTWARE=true GALLIUM_DRIVER=llvmpipe kitty --title update sh -c "${upd_script}"
 }
 
 case $1 in

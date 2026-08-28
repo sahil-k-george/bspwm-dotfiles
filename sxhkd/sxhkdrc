@@ -7,7 +7,8 @@ super + e
 
 # terminal emulator
 super + t
-	kitty 
+	env LIBGL_ALWAYS_SOFTWARE=true GALLIUM_DRIVER=llvmpipe kitty
+
 super + b
 	falkon
 

@@ -1,14 +1,18 @@
 #!/bin/bash
 
-if [ -d "$HOME/.cache/wal" ]; then
-    rm -rf "$HOME/.cache/wal"
-fi
-
 wall="$HOME/.config/i3/.cache/current.png"
-
-if [[ -f "$wall" ]]; then
-    wal -i "$wall"
+if [[ ! -f "$wall" ]]; then
+    wall="$HOME/.config/i3/Wallpapers/aquaruby1.png"
 fi
+
+if command -v wal &> /dev/null; then
+    if [[ -f "$wall" ]]; then
+        wal -i "$wall"
+    fi
+else
+    mkdir -p "$HOME/.cache/wal"
+fi
+
 
 # Extract colors from colors.json
 colors_file=~/.cache/wal/colors.json

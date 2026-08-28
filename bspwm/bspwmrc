@@ -20,10 +20,22 @@ bspc config honor_frozen_display_rules false
 #this rule makes the app open only on the given workspace
 #bspc rule -a falkon desktop='^2' follow=on
 
+#bgpath="$HOME/.config/i3/Wallpapers/aquaruby1.png"
+#if [ ! -f "$bgpath" ]; then
+#    bgpath="$HOME/Pictures/carrera.png"
+#fi#
+#
+# Ensure the cache folder exists and contains the current wallpaper
+#mkdir -p "$HOME/.config/i3/.cache"
+#if [ -f "$bgpath" ] && [ ! -f "$HOME/.config/i3/.cache/current.png" ]; then
+#    ln -sf "$bgpath" "$HOME/.config/i3/.cache/current.png"
+#fi
 bgpath="$HOME/Pictures/carrera.png"
-
-pgrep -x feh > /dev/null || feh --bg-scale $bgpath &
+#pgrep -x feh > /dev/null || feh --bg-scale "$bgpath" &
 pgrep -x wal > /dev/null || wal -i "$bgpath" &
 sleep 1
+# Run Colors.sh to generate theme files for Polybar, Kitty, and Dunst
+#$HOME/.config/bspwm/scripts/Colors.sh &
 pgrep -x sxhkd > /dev/null || sxhkd &
 $HOME/.config/polybar/bspwm/launch.sh &
+
