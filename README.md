@@ -120,17 +120,17 @@ You can either symbolically link (highly recommended for keeping changes in sync
 mkdir -p ~/.config
 
 # Link directories
-ln -sf ~/dotfiles/.config/bspwm ~/.config/bspwm
-ln -sf ~/dotfiles/.config/sxhkd ~/.config/sxhkd
-ln -sf ~/dotfiles/.config/polybar ~/.config/polybar
-ln -sf ~/dotfiles/.config/rofi ~/.config/rofi
-ln -sf ~/dotfiles/.config/dunst ~/.config/dunst
-ln -sf ~/dotfiles/.config/kitty ~/.config/kitty
-ln -sf ~/dotfiles/.config/wal ~/.config/wal
+ln -sf ~/dotfiles/bspwm ~/.config/bspwm
+ln -sf ~/dotfiles/sxhkd ~/.config/sxhkd
+ln -sf ~/dotfiles/polybar ~/.config/polybar
+ln -sf ~/dotfiles/rofi ~/.config/rofi
+ln -sf ~/dotfiles/dunst ~/.config/dunst
+ln -sf ~/dotfiles/kitty ~/.config/kitty
+ln -sf ~/dotfiles/wal ~/.config/wal
 
 # Link individual configuration files
-ln -sf ~/dotfiles/.config/greenclip.toml ~/.config/greenclip.toml
-ln -sf ~/dotfiles/.config/picom.conf.arch ~/.config/picom.conf
+ln -sf ~/dotfiles/greenclip.toml ~/.config/greenclip.toml
+ln -sf ~/dotfiles/picom.conf.arch ~/.config/picom.conf
 ```
 
 #### **Option B: Deploy by Copying Files**
@@ -138,35 +138,22 @@ ln -sf ~/dotfiles/.config/picom.conf.arch ~/.config/picom.conf
 mkdir -p ~/.config
 
 # Copy directories
-cp -r ~/dotfiles/.config/bspwm ~/.config/
-cp -r ~/dotfiles/.config/sxhkd ~/.config/
-cp -r ~/dotfiles/.config/polybar ~/.config/
-cp -r ~/dotfiles/.config/rofi ~/.config/
-cp -r ~/dotfiles/.config/dunst ~/.config/
-cp -r ~/dotfiles/.config/kitty ~/.config/
-cp -r ~/dotfiles/.config/wal ~/.config/
+cp -r ~/dotfiles/bspwm ~/.config/
+cp -r ~/dotfiles/sxhkd ~/.config/
+cp -r ~/dotfiles/polybar ~/.config/
+cp -r ~/dotfiles/rofi ~/.config/
+cp -r ~/dotfiles/dunst ~/.config/
+cp -r ~/dotfiles/kitty ~/.config/
+cp -r ~/dotfiles/wal ~/.config/
 
 # Copy individual files
-cp ~/dotfiles/.config/greenclip.toml ~/.config/greenclip.toml
-cp ~/dotfiles/.config/picom.conf.arch ~/.config/picom.conf
+cp ~/dotfiles/greenclip.toml ~/.config/greenclip.toml
+cp ~/dotfiles/picom.conf.arch ~/.config/picom.conf
 ```
 
 ---
 
-### Step 4: Make Scripts Executable (CRITICAL)
-BSPWM needs the startup configurations and scripts to be executable. If they are not, you will get a black screen (and some systems like Kali Linux will show a small fallback warning window with just an `okay` button).
-
-Run these commands to make sure the permissions are set correctly:
-```bash
-chmod +x ~/.config/bspwm/bspwmrc
-chmod +x ~/.config/polybar/launch.sh
-chmod +x ~/.config/polybar/bspwm/launch.sh
-chmod +x ~/.config/bspwm/scripts/*.sh
-```
-
----
-
-### Step 5: Configure and Enable Systemd Services
+### Step 4: Configure and Enable Systemd Services
 
 The Haskell clipboard manager `greenclip` requires its daemon to be running. We configure it as a user systemd service:
 
