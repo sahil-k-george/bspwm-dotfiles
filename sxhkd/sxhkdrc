@@ -34,6 +34,10 @@ super + Delete
 super + Escape
 	pkill -USR1 -x sxhkd
 
+# launch help menu keybindings list:
+super + F1
+	~/.config/bspwm/scripts/help.sh &
+
 #
 # bspwm hotkeys
 #

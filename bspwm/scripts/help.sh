@@ -1,27 +1,25 @@
 #!/bin/bash
 
-# took and modified from JaKooLit #
+# Detect X11 monitor resolution
+res=$(xrandr --current | grep '*' | uniq | awk '{print $1}')
+x_mon=$(echo "$res" | cut -d'x' -f1)
+y_mon=$(echo "$res" | cut -d'x' -f2)
 
-# Detect monitor resolution and scale
-x_mon=$(hyprctl -j monitors | jq '.[] | select(.focused==true) | .width')
-y_mon=$(hyprctl -j monitors | jq '.[] | select(.focused==true) | .height')
-hypr_scale=$(hyprctl -j monitors | jq '.[] | select (.focused == true) | .scale' | sed 's/\.//')
-
-# Calculate width and height based on percentages and monitor resolution
-width=$((x_mon * hypr_scale / 100))
-height=$((y_mon * hypr_scale / 100))
+# Fallbacks if xrandr query fails
+x_mon=${x_mon:-1366}
+y_mon=${y_mon:-768}
 
 # Set maximum width and height
-max_width=1200
-max_height=1000
+max_width=1000
+max_height=800
 
 # Set percentage of screen size for dynamic adjustment
-percentage_width=70
-percentage_height=70
+percentage_width=60
+percentage_height=65
 
 # Calculate dynamic width and height
-dynamic_width=$((width * percentage_width / 100))
-dynamic_height=$((height * percentage_height / 100))
+dynamic_width=$((x_mon * percentage_width / 100))
+dynamic_height=$((y_mon * percentage_height / 100))
 
 # Limit width and height to maximum values
 dynamic_width=$(($dynamic_width > $max_width ? $max_width : $dynamic_width))
@@ -30,43 +28,42 @@ dynamic_height=$(($dynamic_height > $max_height ? $max_height : $dynamic_height)
 # Launch yad with calculated width and height
 yad --width=$dynamic_width --height=$dynamic_height \
     --center \
-    --title="Keybindings" \
+    --title="BSPWM Keybindings Help" \
     --no-buttons \
     --list \
-    --column=Key: \
-    --column=Description: \
-    --column=Command: \
+    --column="Key Combination" \
+    --column="Description" \
+    --column="Action / Target" \
     --timeout-indicator=bottom \
-" = " "SUPER KEY (Windows Key)" "(Mod key)" \
+" = " "SUPER KEY (Windows Key)" "(Mod key modifier)" \
 "" "" "" \
-" + Return" "Terminal" "(Kitty)" \
+" + T" "Launch Terminal" "(Kitty)" \
 " + E" "Open File Manager" "(Thunar)" \
+" + B" "Open Web Browser" "(Falkon)" \
+" + Space" "App Launcher Menu" "(Rofi)" \
+" + Delete" "Power / Session Menu" "(Lock, Logout, Reboot, Shutdown)" \
+" + Escape" "Reload Hotkeys configuration" "(sxhkd daemon)" \
+" + Ctrl + R" "Restart Window Manager" "(Reloads bspwmrc)" \
+" + Ctrl + Q" "Quit BSPWM Session" "(Logs out to display manager)" \
 "" "" "" \
-" + D" "App Launcher" "(Rofi)" \
-" + SHIFT + D" "Emoji Selector" "(Rofi)" \
-" + x" "Power Menu" "(Rofi)" \
-" + Alt + b" "Shell (zsh/bash) Theme" "(Rofi)" \
-" + + W" "Change wallpaper" "(Based on theme)" \
-" + + T" "Change Theme" "(Only 3 for now)" \
+" + Q" "Close Focused Window" "Graceful close" \
+" + Shift + Q" "Kill Window Process" "Force termination" \
+" + F" "Toggle Fullscreen State" "Fullscreen toggle" \
+" + S" "Toggle Floating State" "Floating layout toggle" \
+" + M" "Toggle Monocle State" "Maximized layout toggle" \
 "" "" "" \
-" + Q" "close active window" "(not kill)" \
+" + {H, J, K, L}" "Focus Window (Left, Down, Up, Right)" "bspwm focus navigation" \
+" + Shift + {H, J, K, L}" "Swap Window (Left, Down, Up, Right)" "bspwm node swap" \
+" + Ctrl + {H, J, K, L}" "Preselect Split (Left, Down, Up, Right)" "Pre-tile split target" \
+" + Alt + {H, J, K, L}" "Resize Window Outward (Left, Down, Up, Right)" "Resize pane margins" \
+" + Alt + Shift + {H, J, K, L}" "Resize Window Inward (Left, Down, Up, Right)" "Resize pane margins" \
+" + {Left, Down, Up, Right}" "Move Floating Window" "Direct floating move" \
 "" "" "" \
-" + B" "Browser" "(Brave/Chromium)" \
-" + SHIFT + B" "Browser" "(Firefox 󰈹 )" \
-" + C" "Code Editor" "(Visual Studio Code 󰨞 )" \
-"Print" "Screenshot" "(Full Screen)" \
-" + Print" "Screenshot region (Select area)" " " \
-" + SHIFT + L" "Screen lock" "(i3lock)" \
-" + F" "Fullscreen" "(Toggles full-screen)" \
-" + V" "Floating" "(Toggle floating window)" \
-" + H" " " "Launch this app" \
-"CTRL + Alt + Space" "Toggle Keyboard" "fcitx5 (Bangla & English)" \
+" + {1 - 9, 0}" "Switch to Desktop Workspace (1 to 10)" "bspwm desktop focus" \
+" + Shift + {1 - 9, 0}" "Move Window to Desktop Workspace" "bspwm node send" \
+" + [ or ]" "Focus Next / Previous Workspace" "Cycle desktops" \
+" + Tab" "Toggle Last Active Desktop" "History focus swap" \
 "" "" "" \
-"F9" "Volume" "(Volume Mute  )" \
-"F10" "Volume" "(Volume Decrease  )" \
-"F11" "Volume" "(Volume Increase  )" \
-"" "" "" \
-"CTRL + ESC" " " "Hide/Launch Polybar" \
-"CTRL+ Alt + ESC" " " "Reload Polybar" \
-"CTRL + Down Aero" "Move Polybar to bottom" " " \
-"CTRL + Up Aero" "Move Polybar to up" " "\
+"Brightness Keys" "Adjust Screen Brightness" "(brightnessctl)" \
+"Audio Volume Keys" "Adjust System Volume" "(pamixer / alsa)"
+\
