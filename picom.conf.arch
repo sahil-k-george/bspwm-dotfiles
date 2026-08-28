@@ -439,4 +439,5 @@ opacity-rule = [
   "70:class_g = 'Kitty'",
   "80:class_g = 'Dunst'",
   "70:class_g = 'Thunar'",
+  "90:class_g = 'Polybar'",
 ];
