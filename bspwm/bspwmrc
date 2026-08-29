@@ -7,7 +7,6 @@ else
     xrandr --auto
 fi
 
-pgrep -x picom >/dev/null || picom &
 pgrep -x sxhkd > /dev/null || sxhkd &
 
 bspc monitor -d 1 2 3 4 5 6 7 8 9 10
@@ -42,6 +41,61 @@ bgpath="$HOME/Pictures/carrera.png"
 #pgrep -x feh > /dev/null || feh --bg-scale "$bgpath" &
 pgrep -x wal > /dev/null || wal -i "$bgpath" &
 sleep 1
+
+# ==========================================================
+# VISUAL EFFECTS TOGGLE
+# ==========================================================
+ENABLE_EFFECTS=true
+
+# Load Pywal colors if they exist
+if [ -f "$HOME/.cache/wal/colors.sh" ]; then
+    . "$HOME/.cache/wal/colors.sh"
+fi
+
+if [ "$ENABLE_EFFECTS" = "true" ]; then
+    # Write Kitty opacity configuration
+    mkdir -p "$HOME/.config/kitty"
+    echo "background_opacity 0.85" > "$HOME/.config/kitty/opacity.conf"
+    
+    # Set Polybar background with 80% transparency (#cc prefix)
+    if [ -n "$background" ]; then
+        clean_bg="${background#\#}"
+        export POLYBAR_BG="#cc$clean_bg"
+    else
+        export POLYBAR_BG="#cc1a1a1a"
+    fi
+    
+    # Start Picom with animations and blur
+    killall -q picom
+    while pgrep -u $UID -x picom >/dev/null; do sleep 0.1; done
+    picom --config "$HOME/.config/picom-effects.conf" &
+    
+    # Theme window borders using Pywal colors
+    if [ -n "$color1" ] && [ -n "$color0" ]; then
+        bspc config focused_border_color "$color1"
+        bspc config normal_border_color  "$color0"
+    else
+        bspc config focused_border_color "#FFFFFF"
+        bspc config normal_border_color  "#858585"
+    fi
+else
+    # Write Kitty opaque configuration
+    mkdir -p "$HOME/.config/kitty"
+    echo "background_opacity 1.0" > "$HOME/.config/kitty/opacity.conf"
+    
+    # Set Polybar background to opaque
+    export POLYBAR_BG="$background"
+    
+    # Start Picom with flat settings
+    killall -q picom
+    while pgrep -u $UID -x picom >/dev/null; do sleep 0.1; done
+    picom --config "$HOME/.config/picom-flat.conf" &
+    
+    # Use original static border colors
+    bspc config focused_border_color "#FFFFFF"
+    bspc config normal_border_color  "#858585"
+fi
+
 # Run Colors.sh to generate theme files for Polybar, Kitty, and Dunst
 #$HOME/.config/bspwm/scripts/Colors.sh &
 pgrep -x sxhkd > /dev/null || sxhkd &
