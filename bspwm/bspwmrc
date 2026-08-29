@@ -52,6 +52,14 @@ if [ -f "$HOME/.cache/wal/colors.sh" ]; then
     . "$HOME/.cache/wal/colors.sh"
 fi
 
+# Auto-link Picom configs from ~/dotfiles to ~/.config if not present
+for file in picom-effects.conf picom-flat.conf; do
+    if [ -f "$HOME/dotfiles/$file" ] && [ ! -f "$HOME/.config/$file" ]; then
+        ln -sf "$HOME/dotfiles/$file" "$HOME/.config/$file"
+    fi
+done
+
+
 if [ "$ENABLE_EFFECTS" = "true" ]; then
     # Write Kitty opacity configuration
     mkdir -p "$HOME/.config/kitty"

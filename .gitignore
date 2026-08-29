@@ -14,6 +14,8 @@
 # White-list specific config files in the root directory
 !/greenclip.toml
 !/picom.conf.arch
+!/picom-effects.conf
+!/picom-flat.conf
 
 # White-list git/documentation files
 !/.gitignore
