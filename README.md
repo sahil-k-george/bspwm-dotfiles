@@ -261,7 +261,15 @@ Here are the main keyboard shortcuts I use (defined in my [`sxhkdrc`](sxhkd/sxhk
 * **`Super + Ctrl + R`**: Reload window manager (`bspwm`)
 * **`Super + 0` through `Super + 9`**: Switches workspaces from 1 - 10 
 
+---
+## Wallpaper Sources 
+Here's the list of wallpapers shown in the screenshots + bonus wallpapers that I own/have rights to.
+1. [Carrera](https://www.reddit.com/r/TenseiSlime/comments/1umwp0w/textless_wallpapers_from_the_new_opening/)
+2. [Red](https://whvn.cc/3q6m6y) `screenshot will be uploaded soon`
+3. [Columbina + Other Wallpapers]() `Link will be added soon`
 
+
+---
 ## Additional Informations
 1. You have to download and supply your own wallpapers as of now, once I upload my own wallpapers, instructions on where to download it from will be updated. 
 2. Change the wallpaper by changing the `bgpath="$HOME/Pictures/carrera.png"` in [bspwmrc](bspwm/bspwmrc) path to the path of your wallpaper. Accent colors and stuff are automatically updated (At least that how it works on 
