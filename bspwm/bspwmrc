@@ -1,10 +1,13 @@
 #! /bin/sh
 
-# Auto-configure/scale displays before setting up monitors
-if command -v autorandr >/dev/null; then
-    autorandr --change --default default
-else
-    xrandr --auto
+# Auto-configure/scale displays before setting up monitors (only on startup)
+if [ ! -f /tmp/bspwm_monitors_configured ]; then
+    touch /tmp/bspwm_monitors_configured
+    if command -v autorandr >/dev/null; then
+        autorandr --change --default default
+    else
+        xrandr --auto
+    fi
 fi
 
 pgrep -x sxhkd > /dev/null || sxhkd &
@@ -38,9 +41,26 @@ bspc config honor_frozen_display_rules false
 #    ln -sf "$bgpath" "$HOME/.config/i3/.cache/current.png"
 #fi
 bgpath="$HOME/Pictures/carrera.png"
-#pgrep -x feh > /dev/null || feh --bg-scale "$bgpath" &
-pgrep -x wal > /dev/null || wal -i "$bgpath" &
-sleep 1
+
+# Ensure Pywal colors are set and wallpaper is restored/applied
+if command -v wal >/dev/null 2>&1; then
+    if [ ! -f "$HOME/.cache/wal/wal" ] || [ "$(cat "$HOME/.cache/wal/wal")" != "$bgpath" ]; then
+        # Wallpaper changed or first run: extract colors and set wallpaper synchronously
+        wal -i "$bgpath"
+        touch /tmp/bspwm_wal_configured
+    else
+        # Wallpaper is the same: only run wal -R on initial boot, skip on reload
+        if [ ! -f /tmp/bspwm_wal_configured ]; then
+            touch /tmp/bspwm_wal_configured
+            wal -R
+        fi
+    fi
+else
+    # Fallback to feh if wal is not installed
+    if command -v feh >/dev/null 2>&1; then
+        pgrep -x feh >/dev/null || feh --bg-scale "$bgpath" &
+    fi
+fi
 
 # ==========================================================
 # VISUAL EFFECTS TOGGLE
