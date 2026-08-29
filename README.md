@@ -24,7 +24,10 @@ Everything is stored inside the `dotfiles` folder (once you are done cloning the
   <img src="screenshots/screenshot3.png" alt="Screenshot 3" width="48%" />
   <img src="screenshots/screenshot4.png" alt="Screenshot 4" width="48%" />
 </p>
-
+<p align="center">
+  <img src="screenshots/screenshot5.png" alt="Screenshot 3" width="48%" />
+  <img src="screenshots/screenshot6.png" alt="Screenshot 4" width="48%" />
+</p>
 
 
 ## What configs are Included
@@ -265,7 +268,7 @@ Here are the main keyboard shortcuts I use (defined in my [`sxhkdrc`](sxhkd/sxhk
 ## Wallpaper Sources 
 Here's the list of wallpapers shown in the screenshots + bonus wallpapers that I own/have rights to.
 1. [Carrera](https://www.reddit.com/r/TenseiSlime/comments/1umwp0w/textless_wallpapers_from_the_new_opening/)
-2. [Red](https://whvn.cc/3q6m6y) `screenshot will be uploaded soon`
+2. [Red](https://whvn.cc/3q6m6y) 
 3. [Columbina + Other Wallpapers]() `Link will be added soon`
 
 
