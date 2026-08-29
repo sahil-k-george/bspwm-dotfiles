@@ -2,9 +2,18 @@
 
 These are my personal configuration files (dotfiles) for my BSPWM setup. This is a clean, keyboard-driven tiling window environment styled dynamically (via Pywal) using BSPWM, Polybar, Dunst, Rofi, and Kitty.
 
-Everything is stored inside the `.config` folder to keep things easy to manage, back up, and copy to new installations.
+Everything is stored inside the `dotfiles` folder (once you are done cloning the repository as given in the command in the following sections) to keep things easy to manage, back up, and copy to new installations.
 
----
+> [!WARNING]
+> **Disclaimer & Usage Warning**
+> Since these are my personal configuration files tailored to my own workflow and hardware, please keep the following in mind:
+> - **Potential Bugs:** You may encounter bugs, broken scripts, or layout issues.
+> - **Updates:** Not all local fixes, tweaks, or updates will be immediately pushed to GitHub. It should also be noted that this is not a `just run and everything's installed` script. Some features or apps mentioned or used may not be referenced in the dependencies installation commands/section.
+> - **Self-Sufficiency Required:** By using these dotfiles, you agree that you are either test-driving them or possess the necessary troubleshooting skills to fix things on your own if something goes wrong, or if some packages or files are missing.
+> - **System Discrepancies:** Configuration details like network interface names, monitor layouts, default wallpaper names, packages, etc., might need manual adjustments to work on your specific setup.
+> - **No Warranty:** Use them at your own risk. Make sure to back up your existing configurations before applying these.
+
+
 ## Screenshots
 
 <p align="center">
@@ -16,9 +25,9 @@ Everything is stored inside the `.config` folder to keep things easy to manage, 
   <img src="screenshots/screenshot4.png" alt="Screenshot 4" width="48%" />
 </p>
 
----
 
-## 🛠️ What configs are Included
+
+## What configs are Included
 
 Here's the breakdown of my config directories and what each does in my setup:
 
@@ -38,7 +47,7 @@ Here's the breakdown of my config directories and what each does in my setup:
 
 ---
 
-## 📦 Dependencies I Use
+## Dependencies I Use
 
 Here are all the packages I have installed on my system to run this environment:
 
@@ -99,7 +108,7 @@ sudo mv greenclip /usr/local/bin/
 
 ---
 
-## 📥 How to Set It Up
+## How to Set It Up
 
 Here are the steps to clone my repository and load these configurations on your own system:
 
@@ -199,9 +208,46 @@ Type=Application
 DesktopNames=bspwm
 ```
 
+> [!WARNING]
+>I might have missed some things that has to be done before exiting the current WM. If you encounter any issues of missing commands or points, do let me know.
 
 ---
-## ⌨️ My Main Keybindings
+
+## How to Update
+
+When new updates or fixes are pushed, you can update your setup based on how you installed it:
+
+### Option A: If you used Symbolic Links (Recommended)
+Since your configuration files are linked directly to the repository, updating is seamless:
+1. Navigate to your local dotfiles directory:
+   ```bash
+   cd ~/dotfiles
+   ```
+2. Pull the latest changes:
+   ```bash
+   git pull
+   ```
+3. Reload your hotkeys (`Super + Escape`) and BSPWM (`Super + Ctrl + R`) to apply the changes immediately.
+
+### Option B: If you Copied the Files
+Since the files were copied to `~/.config/`, you will need to pull the updates and copy them over again:
+1. Navigate to your local dotfiles directory and pull the latest changes:
+   ```bash
+   cd ~/dotfiles && git pull
+   ```
+2. Copy the updated directories and files (overwriting the old ones):
+   ```bash
+   # Copy directories
+   cp -r bspwm/ sxhkd/ polybar/ rofi/ dunst/ kitty/ ~/.config/
+
+   # Copy individual files
+   cp greenclip.toml ~/.config/greenclip.toml
+   cp picom.conf.arch ~/.config/picom.conf
+   ```
+3. Reload your hotkeys (`Super + Escape`) and BSPWM (`Super + Ctrl + R`) to apply the changes.
+
+---
+##  My Main Keybindings
 
 Here are the main keyboard shortcuts I use (defined in my [`sxhkdrc`](sxhkd/sxhkdrc)):
 
