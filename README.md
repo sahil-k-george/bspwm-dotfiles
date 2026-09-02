@@ -60,7 +60,7 @@ Here are all the packages I have installed on my system to run this environment:
 Using `pacman` and `yay` (or your preferred AUR helper):
 ```bash
 # Install core packages from official repos
-sudo pacman -S bspwm sxhkd polybar rofi dunst kitty feh imagemagick pamixer brightnessctl maim xclip xdotool jq libnotify ttf-jetbrains-mono-nerd yad autorandr xorg-xrandr
+sudo pacman -S bspwm sxhkd polybar rofi dunst kitty feh imagemagick pamixer brightnessctl maim xclip xdotool jq libnotify ttf-jetbrains-mono-nerd yad autorandr xorg-xrandr pacman-contrib thunar falkon
 
 # Install AUR packages (pywal, greenclip, betterlockscreen, picom with animations)
 yay -S python-pywal greenclip betterlockscreen picom-git
@@ -70,7 +70,7 @@ yay -S python-pywal greenclip betterlockscreen picom-git
 ```bash
 # Install core packages from APT
 sudo apt update
-sudo apt install bspwm sxhkd polybar rofi dunst kitty feh imagemagick pamixer brightnessctl maim xclip xdotool jq libnotify-bin fonts-jetbrains-mono python3-pip picom fonts-font-awesome fonts-firacode betterlocksscreen yad autorandr x11-xserver-utils
+sudo apt install bspwm sxhkd polybar rofi dunst kitty feh imagemagick pamixer brightnessctl maim xclip xdotool jq libnotify-bin fonts-jetbrains-mono python3-pip picom fonts-font-awesome fonts-firacode yad autorandr x11-xserver-utils thunar falkon
 
 # Install Pywal via pip
 pip3 install --user pywal
@@ -79,12 +79,15 @@ pip3 install --user pywal
 wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip
 chmod +x greenclip
 sudo mv greenclip /usr/local/bin/
+
+# Note: betterlockscreen must be built from source or installed manually on Debian/Ubuntu
+# as it requires i3lock-color, which is not in the default APT repositories.
 ```
 
 #### **Fedora**
 ```bash
 # Install core packages from DNF
-sudo dnf install bspwm sxhkd polybar rofi dunst kitty feh ImageMagick pamixer brightnessctl maim xclip xdotool jq libnotify jetbrains-mono-fonts picom yad autorandr xrandr
+sudo dnf install bspwm sxhkd polybar rofi dunst kitty feh ImageMagick pamixer brightnessctl maim xclip xdotool jq libnotify jetbrains-mono-fonts picom yad autorandr xrandr thunar falkon
 
 # Install Pywal via pip
 pip install --user pywal
@@ -98,7 +101,7 @@ sudo mv greenclip /usr/local/bin/
 #### **OpenSUSE**
 ```bash
 # Install core packages from Zypper
-sudo zypper install bspwm sxhkd polybar rofi dunst kitty feh ImageMagick pamixer brightnessctl maim xclip xdotool jq libnotify-tools jetbrains-mono-fonts picom yad autorandr xrandr
+sudo zypper install bspwm sxhkd polybar rofi dunst kitty feh ImageMagick pamixer brightnessctl maim xclip xdotool jq libnotify-tools jetbrains-mono-fonts picom yad autorandr xrandr thunar falkon
 
 # Install Pywal via pip
 pip install --user pywal
@@ -145,6 +148,7 @@ ln -sf ~/dotfiles/polybar ~/.config/polybar
 ln -sf ~/dotfiles/rofi ~/.config/rofi
 ln -sf ~/dotfiles/dunst ~/.config/dunst
 ln -sf ~/dotfiles/kitty ~/.config/kitty
+ln -sf ~/dotfiles/wal ~/.config/wal
 
 # Link individual configuration files
 ln -sf ~/dotfiles/greenclip.toml ~/.config/greenclip.toml
@@ -162,18 +166,11 @@ cp -r ~/dotfiles/polybar ~/.config/
 cp -r ~/dotfiles/rofi ~/.config/
 cp -r ~/dotfiles/dunst ~/.config/
 cp -r ~/dotfiles/kitty ~/.config/
+cp -r ~/dotfiles/wal ~/.config/
 
 # Copy individual files
 cp ~/dotfiles/greenclip.toml ~/.config/greenclip.toml
 cp ~/dotfiles/picom.conf.arch ~/.config/picom.conf
-
-mkdir ~/.config/wal
-mkdir ~/.config/wal/templates
-mkdir ~/.config/wal/colorschemes
-mkdir ~/.config/wal/colorschemes/dark
-mkdir ~/.config/wal/colorschemes/light
-
-
 ```
 
 ---

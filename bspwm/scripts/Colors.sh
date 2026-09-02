@@ -1,8 +1,8 @@
 #!/bin/bash
 
-wall="$HOME/.config/i3/.cache/current.png"
+wall="$HOME/.config/bspwm/.cache/current.png"
 if [[ ! -f "$wall" ]]; then
-    wall="$HOME/.config/i3/Wallpapers/aquaruby1.png"
+    wall="$HOME/Pictures/carrera.png"
 fi
 
 if command -v wal &> /dev/null; then
@@ -16,7 +16,7 @@ fi
 
 # Extract colors from colors.json
 colors_file=~/.cache/wal/colors.json
-colors_conf=~/.config/i3/configs/colors.conf
+colors_conf=~/.config/bspwm/colors.conf
 
 # Extract colors using jq
 background=$(jq -r '.special.background' "$colors_file")
@@ -27,6 +27,7 @@ for i in {0..8}; do
   eval "color$i=\$(jq -r \".colors.color$i\" \"\$colors_file\")"
 done
 
+mkdir -p "$(dirname "$colors_conf")"
 cat > "$colors_conf" << EOF
 # class                 border      backgr.    text        indicator   child_border
 client.focused          $color4     $background $foreground $color4     $color4
@@ -167,6 +168,7 @@ for pkg in "${pkgs[@]}"; do
     fi
 done
 
-# restart i3wm
-i3-msg restart
+# restart bspwm
+bspc wm -r
+# ------------------------
 # ------------------------
