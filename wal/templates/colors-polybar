@@ -8,6 +8,9 @@ secondary = {color2}
 alert = {color3}
 disabled = {color15}
 
+trans1 = #80000000
+trans2 = #00000000
+
 bg = #d9{color0.strip}
 fg = {color7}
 c0 = {color0}
