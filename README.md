@@ -150,6 +150,10 @@ ln -sf ~/dotfiles/dunst ~/.config/dunst
 ln -sf ~/dotfiles/kitty ~/.config/kitty
 ln -sf ~/dotfiles/wal ~/.config/wal
 
+# Copy wal to cache
+mkdir -p ~/.cache
+cp -r ~/dotfiles/wal ~/.cache/
+
 # Link individual configuration files
 ln -sf ~/dotfiles/greenclip.toml ~/.config/greenclip.toml
 ln -sf ~/dotfiles/picom.conf.arch ~/.config/picom.conf
@@ -167,6 +171,10 @@ cp -r ~/dotfiles/rofi ~/.config/
 cp -r ~/dotfiles/dunst ~/.config/
 cp -r ~/dotfiles/kitty ~/.config/
 cp -r ~/dotfiles/wal ~/.config/
+
+# Copy wal to cache
+mkdir -p ~/.cache
+cp -r ~/dotfiles/wal ~/.cache/
 
 # Copy individual files
 cp ~/dotfiles/greenclip.toml ~/.config/greenclip.toml
@@ -238,7 +246,11 @@ Since the files were copied to `~/.config/`, you will need to pull the updates a
 2. Copy the updated directories and files (overwriting the old ones):
    ```bash
    # Copy directories
-   cp -r bspwm/ sxhkd/ polybar/ rofi/ dunst/ kitty/ ~/.config/
+   cp -r bspwm/ sxhkd/ polybar/ rofi/ dunst/ kitty/ wal/ ~/.config/
+
+   # Copy wal to cache
+   mkdir -p ~/.cache
+   cp -r wal/ ~/.cache/
 
    # Copy individual files
    cp greenclip.toml ~/.config/greenclip.toml

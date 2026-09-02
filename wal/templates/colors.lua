@@ -1,4 +1,4 @@
-return {
+return {{
     -- Special
     wallpaper  = "{wallpaper}",
     background = "{background}",
@@ -22,4 +22,4 @@ return {
     color13    = "{color13}",
     color14    = "{color14}",
     color15    = "{color15}",
-}
+}}

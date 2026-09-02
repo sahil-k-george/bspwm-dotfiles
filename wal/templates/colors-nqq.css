@@ -28,4 +28,4 @@
 .cm-s-nqqwal span.CodeMirror-nonmatchingbracket {{ border-bottom: 1px solid; background: none; }}
 .cm-s-nqqwal .CodeMirror-activeline-background {{ background: rgba({color5.rgb},0.4); }}
 .cm-s-nqqwal div.CodeMirror-selected {{ background: {color3}; }}
-.cm-s-nqqwal .CodeMirror-focused div.CodeMirror-selected {{ background: {color0}); }}
+.cm-s-nqqwal .CodeMirror-focused div.CodeMirror-selected {{ background: {color0}; }}
