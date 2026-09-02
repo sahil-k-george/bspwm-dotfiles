@@ -1,6 +1,6 @@
 # My BSPWM Dotfiles
 
-These are my personal configuration files (dotfiles) for my BSPWM setup. This is a clean, keyboard-driven tiling window environment styled dynamically (via Pywal) using BSPWM, Polybar, Dunst, Rofi, and Kitty.
+These are my personal configuration files (dotfiles) for my BSPWM setup. This is a clean, keyboard-driven tiling window environment styled dynamically (via Pywal16) using BSPWM, Polybar, Dunst, Rofi, and Kitty.
 
 Everything is stored inside the `dotfiles` folder (once you are done cloning the repository as given in the command in the following sections) to keep things easy to manage, back up, and copy to new installations.
 
@@ -43,7 +43,7 @@ Here's the breakdown of my config directories and what each does in my setup:
 | **Rofi** | [`rofi/`](rofi/) | App launcher, clipboard history searcher, power menu, and screenshot interfaces. |
 | **Dunst** | [`dunst/`](dunst/) | Lightweight and customizable notification daemon config. |
 | **Kitty** | [`kitty/`](kitty/) | Fast, GPU-accelerated terminal emulator configured for standard use. |
-| **Pywal** | [`wal/`](wal/) | Color templates used to generate theme palettes dynamically based on your wallpapers. |
+| **Pywal16** | [`wal/`](wal/) | Color templates used to generate theme palettes dynamically based on your wallpapers. |
 | **Picom** | [`picom.conf.arch`](picom.conf.arch) | Compositor configuration file for window fading, shadows, animations, and transparency. |
 | **Greenclip** | [`greenclip.toml`](greenclip.toml) | Configuration for the Haskell-based clipboard manager daemon. |
 | **Systemd** | [`systemd/`](systemd/) | Contains the user systemd service to autostart the `greenclip` daemon. |
@@ -54,6 +54,11 @@ Here's the breakdown of my config directories and what each does in my setup:
 
 Here are all the packages I have installed on my system to run this environment:
 
+> [!IMPORTANT]
+> **Use Pywal16 (`pywal16`), not legacy `pywal`:**
+> The original `pywal` package by dylanaraps has been unmaintained for several years and causes silent crashes on newer Python runtimes (Python 3.10+). Furthermore, the templates in this setup (such as Polybar's `colors-polybar`) utilize template functions like `.darken()` and `.lighten()` that are only supported in [**`pywal16`**](https://github.com/eylles/pywal16).
+> If you already have legacy `pywal` installed, uninstall it first (`sudo pacman -R python-pywal` or `pip uninstall pywal`). The CLI command remains identical (`wal -i /path/to/wallpaper.png`).
+
 ### 1. Installing on Different Linux Distros
 
 #### **Arch Linux**
@@ -62,8 +67,11 @@ Using `pacman` and `yay` (or your preferred AUR helper):
 # Install core packages from official repos
 sudo pacman -S bspwm sxhkd polybar rofi dunst kitty feh imagemagick pamixer brightnessctl maim xclip xdotool jq libnotify ttf-jetbrains-mono-nerd yad autorandr xorg-xrandr pacman-contrib thunar falkon
 
-# Install AUR packages (pywal, greenclip, betterlockscreen, picom with animations)
-yay -S python-pywal greenclip betterlockscreen picom-git
+# Install AUR packages (pywal16, greenclip, betterlockscreen, picom with animations)
+yay -S python-pywal16 greenclip betterlockscreen picom-git
+
+# Alternatively, if installing pywal16 via pip/pipx:
+# pip install --break-system-packages pywal16  # OR: pipx install pywal16
 ```
 
 #### **Debian / Ubuntu**
@@ -72,8 +80,10 @@ yay -S python-pywal greenclip betterlockscreen picom-git
 sudo apt update
 sudo apt install bspwm sxhkd polybar rofi dunst kitty feh imagemagick pamixer brightnessctl maim xclip xdotool jq libnotify-bin fonts-jetbrains-mono python3-pip picom fonts-font-awesome fonts-firacode yad autorandr x11-xserver-utils thunar falkon
 
-# Install Pywal via pip
-pip3 install --user pywal
+# Install Pywal16 via pip
+pip3 install --user pywal16
+# Note: On newer Debian/Ubuntu releases with PEP 668, use:
+# pip3 install --user --break-system-packages pywal16  # OR: pipx install pywal16
 
 # Download Greenclip binary from GitHub
 wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip
@@ -89,8 +99,10 @@ sudo mv greenclip /usr/local/bin/
 # Install core packages from DNF
 sudo dnf install bspwm sxhkd polybar rofi dunst kitty feh ImageMagick pamixer brightnessctl maim xclip xdotool jq libnotify jetbrains-mono-fonts picom yad autorandr xrandr thunar falkon
 
-# Install Pywal via pip
-pip install --user pywal
+# Install Pywal16 via pip
+pip install --user pywal16
+# Note: On newer Fedora releases with PEP 668, use:
+# pip install --user --break-system-packages pywal16  # OR: pipx install pywal16
 
 # Download Greenclip binary from GitHub
 wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip
@@ -103,8 +115,10 @@ sudo mv greenclip /usr/local/bin/
 # Install core packages from Zypper
 sudo zypper install bspwm sxhkd polybar rofi dunst kitty feh ImageMagick pamixer brightnessctl maim xclip xdotool jq libnotify-tools jetbrains-mono-fonts picom yad autorandr xrandr thunar falkon
 
-# Install Pywal via pip
-pip install --user pywal
+# Install Pywal16 via pip
+pip install --user pywal16
+# Note: On newer openSUSE releases with PEP 668, use:
+# pip install --user --break-system-packages pywal16  # OR: pipx install pywal16
 
 # Download Greenclip binary from GitHub
 wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip
